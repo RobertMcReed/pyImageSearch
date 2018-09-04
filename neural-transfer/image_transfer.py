@@ -9,7 +9,7 @@ args = vars(ap.parse_args())
 
 image = cv2.imread(args['image'])
 
-output = transfer(image, args['model'], True)
+output = transfer(image, args['model'], True)[0]
 
 cv2.imshow('Original', image)
 cv2.imshow('Modified', output)

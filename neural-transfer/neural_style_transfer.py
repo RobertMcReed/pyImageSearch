@@ -8,9 +8,9 @@ def print_if(bool, *args):
         print(*args)
 
 
-def transfer(image, model, verbose=False):
+def transfer(image, model, verbose=False, net=False):
     print_if(verbose, '[INFO] loading style transfer model...')
-    net = cv2.dnn.readNetFromTorch(model)
+    net = net if net else cv2.dnn.readNetFromTorch(model)
 
     image = imutils.resize(image, width=600)
     (h, w) = image.shape[:2]
@@ -31,4 +31,4 @@ def transfer(image, model, verbose=False):
 
     print_if(verbose, '[INFO] neural style transfer took {:.4f} seconds'.format(end - start))
 
-    return output
+    return output, net
